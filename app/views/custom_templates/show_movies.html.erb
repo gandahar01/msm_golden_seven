@@ -1,0 +1,47 @@
+<style>
+  table {
+    border-collapse: collapse;
+    }
+  th, td {
+    border: 1px solid orange;
+    padding: 10px;
+    text-align: left;  
+    vertical-align: top;
+  }
+</style>
+<h1>Movie Details</h1>
+
+<table>
+ <tr>
+    <th>Title</th>
+    <th>Year</th> 
+    <th>Duration</th>
+    <th>Description</th>
+    <th>Image url</th>
+    <th>Links</th>
+  </tr>
+
+  <tr>
+      <td><%= @moviee.title %></td>
+      <td><%= @moviee.year %></td>
+      <td><%= @moviee.duration %></td>
+      <td><%= @moviee.description %></td>
+      <td><%= @moviee.image_url %></td>
+      <td><%= time_ago_in_words(@moviee.created_at) %> ago</td>
+</tr>
+
+<a href="/movies" class="btn btn-default">
+  Go back
+</a>
+
+<a href="/movies/<%= @moviee.id %>/edit_form" class="btn btn-default">
+  Edit movie
+</a>
+
+<a href="/delete_movie/<%= @moviee.id %>" class="btn btn-default">
+  Delete movie
+</a>
+
+</table>
+
+

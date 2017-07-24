@@ -103,5 +103,59 @@ class MoviesController < ApplicationController
   end
 
 # Actors END
+
+# Movies START 
+  def new_form_movies
+    render("custom_templates/new_form_movies.html.erb")
+  end
+
+  def create_mrow
+    p = Movie.new
+
+    p.title = params[:the_title]
+    p.year = params[:the_year]
+    p.duration = params[:the_duration]
+    p.description = params[:the_description]
+    p.image_url = params[:the_image_url]
+    
+    p.save
+
+    redirect_to("/movies")
+  end
+  
+  def update_mrow
+    p = Movie.find(params[:the_id])
+
+    p.title = params[:the_title]
+    p.year = params[:the_year]
+    p.duration = params[:the_duration]
+    p.description = params[:the_description]
+    p.image_url = params[:the_image_url]
+    p.save
+    redirect_to("/movies/#{p.id}")
+  end
+  
+  def index_movies
+    @list_of_movies = Movie.order(:created_at => :desc)
+    render("custom_templates/index_movies.html.erb")
+  end
+  
+  def show_movies
+    @moviee = Movie.find(params[:an_id])
+    render("custom_templates/show_movies.html.erb")
+  end
+  
+  def movie_destroy_row
+    p = Movie.find(params[:movie_toast_id])
+    p.destroy
+    redirect_to("/movies")
+  end
+  
+  def edit_movie
+    @moviee = Movie.find(params[:some_id])
+    render("custom_templates/edit_form_movie.html.erb")
+  end
+
+# Movies END
  
 end
