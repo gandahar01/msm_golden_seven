@@ -42,7 +42,7 @@ class MoviesController < ApplicationController
   def director_destroy_row
     p = Director.find(params[:director_toast_id])
     p.destroy
-    render("custom_templates/delete_director.html.erb")
+    redirect_to("/directors")
   end
   
   def edit_director
