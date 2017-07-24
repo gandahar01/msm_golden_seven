@@ -1,0 +1,45 @@
+<style>
+  table {
+    border-collapse: collapse;
+    }
+  th, td {
+    border: 1px solid orange;
+    padding: 10px;
+    text-align: left;  
+    vertical-align: top;
+  }
+</style>
+<h1>Director Details</h1>
+
+<table>
+ <tr>
+    <th>Name</th>
+    <th>Bio</th> 
+    <th>Dob</th>
+    <th>Image url</th>
+    <th>Created At</th>
+  </tr>
+
+  <tr>
+      <td><%= @directore.name %></td>
+      <td><%= @directore.bio %></td>
+      <td><%= @directore.dob %></td>
+      <td><%= @directore.image_url %></td>
+      <td><%= time_ago_in_words(@directore.created_at) %> ago</td>
+</tr>
+
+<a href="/directors" class="btn btn-default">
+  Go back
+</a>
+
+<a href="/directors/<%= @directore.id %>/edit_form" class="btn btn-default">
+  Edit
+</a>
+
+<a href="/delete_director/<%= @directore.id %>" class="btn btn-default">
+  Delete
+</a>
+
+</table>
+
+
