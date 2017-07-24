@@ -52,34 +52,56 @@ class MoviesController < ApplicationController
 
 # Directors END
 
-  def show
-    @photo = Photo.find(params[:an_id])
-
-    render("pic_templates/show.html.erb")
+# Actors START 
+  def new_form_actors
+    render("custom_templates/new_form_actors.html.erb")
   end
 
-  def edit_form
-    @photo = Photo.find(params[:some_id])
+  def create_arow
+    p = Actor.new
 
-    render("pic_templates/edit_form.html.erb")
-  end
-
-  def update_row
-    p = Photo.find(params[:the_id])
-
-    p.source = params[:the_source]
-    p.caption = params[:the_caption]
-
+    p.name = params[:the_name]
+    p.bio = params[:the_bio]
+    p.dob = params[:the_dob]
+    p.image_url = params[:the_image_url]
+    
     p.save
 
-    redirect_to("/photos/#{p.id}")
+    redirect_to("/actors")
   end
+  
+  def update_arow
+    p = Actor.find(params[:the_id])
 
-  def destroy_row
-    p = Photo.find(params[:toast_id])
-
+    p.name = params[:the_name]
+    p.bio = params[:the_bio]
+    p.dob = params[:the_dob]
+    p.image_url = params[:the_image_url]
+    p.save
+    redirect_to("/actors/#{p.id}")
+  end
+  
+  def index_actors
+    @list_of_actors = Actor.order(:created_at => :desc)
+    render("custom_templates/index_actors.html.erb")
+  end
+  
+  def show_actors
+    @actore = Actor.find(params[:an_id])
+    render("custom_templates/show_actors.html.erb")
+  end
+  
+  def actor_destroy_row
+    p = Actor.find(params[:actor_toast_id])
     p.destroy
-
-    redirect_to("/photos")
+    redirect_to("/actors")
   end
+  
+  def edit_actor
+    @actore = Actor.find(params[:some_id])
+    render("custom_templates/edit_form_actor.html.erb")
+  end
+
+# Actors END
+ 
 end
