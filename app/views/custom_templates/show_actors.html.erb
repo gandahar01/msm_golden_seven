@@ -1,0 +1,45 @@
+<style>
+  table {
+    border-collapse: collapse;
+    }
+  th, td {
+    border: 1px solid orange;
+    padding: 10px;
+    text-align: left;  
+    vertical-align: top;
+  }
+</style>
+<h1>Actor Details</h1>
+
+<table>
+ <tr>
+    <th>Name</th>
+    <th>Bio</th> 
+    <th>Dob</th>
+    <th>Image url</th>
+    <th>Created At</th>
+  </tr>
+
+  <tr>
+      <td><%= @actore.name %></td>
+      <td><%= @actore.bio %></td>
+      <td><%= @actore.dob %></td>
+      <td><%= @actore.image_url %></td>
+      <td><%= time_ago_in_words(@actore.created_at) %> ago</td>
+</tr>
+
+<a href="/actors" class="btn btn-default">
+  Go back
+</a>
+
+<a href="/actors/<%= @actore.id %>/edit_form" class="btn btn-default">
+  Edit actor
+</a>
+
+<a href="/delete_actor/<%= @actore.id %>" class="btn btn-default">
+  Delete actor
+</a>
+
+</table>
+
+

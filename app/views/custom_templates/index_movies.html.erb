@@ -1,0 +1,59 @@
+<style>
+  table {
+    border-collapse: collapse;
+    }
+  th, td {
+    border: 1px solid orange;
+    padding: 10px;
+    text-align: left;  
+    vertical-align: top;
+  }
+</style>
+
+<h1>All Movies</h1>
+
+<a href="/movies/new_form">
+    Add a new movie
+</a>
+
+<table>
+ <tr>
+    <th>Title</th>
+    <th>Year</th> 
+    <th>Duration</th>
+    <th>Description</th>
+    <th>Image url</th>
+    <th>Links</th>
+  </tr>
+
+<% @list_of_movies.each do |the_movie| %>
+  <div class="caption">
+  <tr>
+      <td><%= the_movie.title %></td>
+      <td><%= the_movie.year %></td>
+      <td><%= the_movie.duration %></td>
+      <td><%= the_movie.description %></td>
+      <div class="thumbnail">
+          <td><%= the_movie.image_url %></td>
+
+    <td><div class="caption">
+      <a href="/movies/<%= the_movie.id %>" class="btn btn-default btn-block">
+        Show details
+      </a>
+
+      <a href="/movies/<%= the_movie.id %>/edit_form" class="btn btn-default btn-block">
+        Edit movie
+      </a>
+
+      <a href="/delete_movie/<%= the_movie.id %>" class="btn btn-default btn-block">
+        Delete movie
+      </a>
+      </td>
+    </div>
+  </div>
+  
+ </tr>
+<% end %>
+
+
+</table>

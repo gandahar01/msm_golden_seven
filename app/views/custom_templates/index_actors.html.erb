@@ -1,0 +1,57 @@
+<style>
+  table {
+    border-collapse: collapse;
+    }
+  th, td {
+    border: 1px solid orange;
+    padding: 10px;
+    text-align: left;  
+    vertical-align: top;
+  }
+</style>
+
+<h1>All Actors</h1>
+
+<a href="/actors/new_form">
+    Add a new actor
+</a>
+
+<table>
+ <tr>
+    <th>Name</th>
+    <th>Bio</th> 
+    <th>Dob</th>
+    <th>Image url</th>
+    <th>Links</th>
+  </tr>
+
+<% @list_of_actors.each do |the_actor| %>
+  <div class="caption">
+  <tr>
+      <td><%= the_actor.name %></td>
+      <td><%= the_actor.bio %></td>
+      <td><%= the_actor.dob %></td>
+      <div class="thumbnail">
+          <td><%= the_actor.image_url %></td>
+
+    <td><div class="caption">
+      <a href="/actors/<%= the_actor.id %>" class="btn btn-default btn-block">
+        Show details
+      </a>
+
+      <a href="/actors/<%= the_actor.id %>/edit_form" class="btn btn-default btn-block">
+        Edit actor
+      </a>
+
+      <a href="/delete_actor/<%= the_actor.id %>" class="btn btn-default btn-block">
+        Delete actor
+      </a>
+      </td>
+    </div>
+  </div>
+  
+ </tr>
+<% end %>
+
+
+</table>
