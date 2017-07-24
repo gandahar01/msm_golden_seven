@@ -1,0 +1,57 @@
+<style>
+  table {
+    border-collapse: collapse;
+    }
+  th, td {
+    border: 1px solid orange;
+    padding: 10px;
+    text-align: left;  
+    vertical-align: top;
+  }
+</style>
+
+<h1>All Directors</h1>
+
+<a href="/directors/new_form">
+    Add a new director
+</a>
+
+<table>
+ <tr>
+    <th>Name</th>
+    <th>Bio</th> 
+    <th>Dob</th>
+    <th>Image url</th>
+    <th>Links</th>
+  </tr>
+
+<% @list_of_directors.each do |the_director| %>
+  <div class="caption">
+  <tr>
+      <td><%= the_director.name %></td>
+      <td><%= the_director.bio %></td>
+      <td><%= the_director.dob %></td>
+      <div class="thumbnail">
+          <td><%= the_director.image_url %></td>
+
+    <td><div class="caption">
+      <a href="/directors/<%= the_director.id %>" class="btn btn-default btn-block">
+        Show details
+      </a>
+
+      <a href="/directors/<%= the_director.id %>/edit_form" class="btn btn-default btn-block">
+        Edit director
+      </a>
+
+      <a href="/delete_director/<%= the_director.id %>" class="btn btn-default btn-block">
+        Delete director
+      </a>
+      </td>
+    </div>
+  </div>
+  
+ </tr>
+<% end %>
+
+
+</table>
