@@ -249,7 +249,7 @@ feature "ACTORS" do
       visit "/actors"
       find("a[href*='#{actor_to_edit.id}']", text: "Show details").click
       click_on "Edit actor"
-
+      
       expect(page).to have_content(actor_to_edit.bio)
     end
   end
